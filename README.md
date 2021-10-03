@@ -4,16 +4,16 @@ Temat: Aplikacja dla wspólnoty mieszkaniowej
 
 Wykorzystane techonologie: 
 	Backend: 
-o	Ruby on Rails v 6.1.4
+	Ruby on Rails v 6.1.4
 
 	Frontend:
-o	HTML5 
-o	CSS3 
-o	Bootstrap5 
-o	JavaScript  
+	HTML5 
+	CSS3 
+	Bootstrap5 
+	JavaScript  
 
 	Baza danych: 
-o	SQLite
+	SQLite
 
 Opis konfiguracji środowiska i uruchomienia projektu:
 
