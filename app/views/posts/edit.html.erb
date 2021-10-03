@@ -1,0 +1,15 @@
+<header>
+    <section id="top" class="jumbotron2 jumbotron-fluid w-100">    
+    </section>
+</header>
+
+<div class="container">
+    <section id="section-body">
+        <h1 class="text-center display-4">Edycja postu</h1>
+
+        <%= render 'form', post: @post %>
+
+        <button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Wyświetl', @post, :class => 'text-decoration-none text-reset' %></button>
+        <button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Cofnij', posts_path, :class => 'text-decoration-none text-reset' %></button>
+    </section>
+</div>

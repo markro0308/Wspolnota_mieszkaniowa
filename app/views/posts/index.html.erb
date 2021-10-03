@@ -1,0 +1,58 @@
+<header>
+    <section id="top" class="jumbotron2 jumbotron-fluid w-100">    
+    </section>
+</header>
+
+<div id="title" class="text-center">Posty</div>
+
+<div class="container">
+  <section id="section-body">
+    <div class="table-responsive">
+      <table id="tabela_postow" class="table table-hover">
+        <thead>
+          <tr style="background-color: #4080bf; color:beige">
+            <th scope="col" class="align-middle">Tytuł</th>
+            <th scope="col" class="align-middle text-center">Data uwtorzenia</th>
+            <th scope="col"></th>
+            <% if (user_signed_in?) && (current_user.email == "admin@ruby.pl") %>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= post.title %></td>
+              <td class="text-center"><%= post.created_at.to_date %></td>
+              <td class="text-center"><%= link_to 'Wyświetl', post, :class => 'text-reset' %></td>
+              <% if (user_signed_in?) && (current_user.email == "admin@ruby.pl") %>
+                <td class="text-center"><%= link_to 'Edytuj', edit_post_path(post), :class => 'text-reset' %></td>
+                <td class="text-center"><%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Czy jesteś pewien?' }, :class => 'text-reset' %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <br>
+    <% if (user_signed_in?) && (current_user.email == "admin@ruby.pl") %>
+      <button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Nowy post', new_post_path, :class => 'text-decoration-none text-reset' %></button>
+    <% end %>
+    <button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Strona główna', home_index_path, :class => 'text-decoration-none text-reset' %></button>
+  </section>
+</div>
+
+<script>
+   $(document).ready(function() {
+      $('#tabela_postow').DataTable({
+         "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+         }
+      });
+   });
+
+
+</script>

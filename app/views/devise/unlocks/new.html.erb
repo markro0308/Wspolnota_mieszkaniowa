@@ -1,0 +1,43 @@
+<style type="text/css">
+    body {
+      background: rgb(64,128,191);
+      background: -moz-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4080bf",endColorstr="#0070ff",GradientType=1);
+    }
+</style>
+
+<div class="main">
+  <div class="container-logo">
+    <center>
+    <div id="session" class="middle">
+      <div id="login">
+
+        <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <fieldset class="clearfix">
+
+            <p ><span class="ikona"><i class="fas fa-envelope"></i></span><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %></p>
+            <div>
+              <span style="display:block; margin-bottom:1em"><%= f.submit "Wyślij instrukcje odblokowania" %></span>
+              <span><%= render "devise/shared/links" %></span>
+              <span><%= link_to "Strona głowna", home_index_path %></span>
+            </div>
+          </fieldset>
+          <div class="clearfix"></div>
+        <% end %>
+
+        <div class="clearfix"></div>
+
+      </div> <!-- end login -->
+      <div class="logo">WYŚLIJ INSTRUKCJE ODBLOKOWANIA
+            
+        <div class="clearfix"></div>
+      </div>
+        
+    </div>
+    </center>
+  </div>
+</div>
+

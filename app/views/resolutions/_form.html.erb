@@ -1,0 +1,41 @@
+<%= form_with(model: resolution) do |form| %>
+  <% if resolution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resolution.errors.count, "error") %> prohibited this resolution from being saved:</h2>
+
+      <ul>
+        <% resolution.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h4 class="fw-normal"><%= form.label :titleR, "Tytuł" %></h4>
+    <%= form.text_field :titleR, class:'shadow-sm fs-3' %>
+  </div>
+
+  <div class="field">
+    <h4 class="fw-normal"><%= form.label :contentR, "Treść" %></h4>
+    <%= form.text_area :contentR, class:'shadow-sm' %>
+  </div>
+
+  <div class="field">
+    <h4 class="fw-normal">Możliwość głosowania</h4>
+    <ul>
+      <li>
+        <%= form.radio_button :votable, true, :checked => true, class: 'radio-b' %> 
+        <%= form.label :votable, "Aktywna", :value => "true" %>
+      </li>
+      <li>  
+        <%= form.radio_button :votable, false, class: 'radio-b' %>
+        <%= form.label :votable, "Nieaktywna", :value => "false" %> 
+      </li>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :"Zapisz uchwałę", class:'btn link color-theme' %>
+  </div>
+<% end %>

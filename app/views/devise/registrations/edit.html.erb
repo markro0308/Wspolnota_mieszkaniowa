@@ -1,0 +1,70 @@
+<style type="text/css">
+    body {
+      background: rgb(64,128,191);
+      background: -moz-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4080bf",endColorstr="#0070ff",GradientType=1);
+    }
+</style>
+
+<div class="main">
+  <div class="container-logo">
+    <center>
+    <div class="middle registration">
+      <div id="login">
+
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <fieldset class="clearfix">
+            <p style="margin-bottom: 0;"><span class="ikona"><i class="fas fa-envelope"></i></span><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %></p>
+            
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Oczekiwanie na potwierdzenie emaila: <%= resource.unconfirmed_email %></p>
+            <% end %>
+            
+            <% if @minimum_password_length %>
+              <p style="margin-bottom:0"><em>(minimum <%= @minimum_password_length %> znaków - zostaw puste jeśli nie chcesz zmieniać hasła)</em></p>
+            <% end %>
+            <p style="margin-top:0"><span class="ikona"><i class="fa fa-lock"></i></span><%= f.password_field :password, autocomplete: "new-password", placeholder: "Nowe hasło" %></p> 
+            
+            <p style="margin-bottom: 0;"><span class="ikona"><i class="fa fa-lock"></i></span><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Powtórz hasło" %></p>
+            
+            <p style="margin-bottom:0"><em>(wpisz aktualne hasło w celu potwierdzenia zmian)</em><p/>
+            <p style="margin-top:0; margin-bottom:1em"><span class="ikona"><i class="fa fa-lock"></i></span><%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Aktualne hasło" %></p>
+            
+            <p><span class="ikona"><i class="fa fa-user"></i></span><%= f.text_field :name, placeholder: "Imie" %></p>
+            
+            <p style="margin-bottom: 0;"><span class="ikona"><i class="fa fa-user"></i></span><%= f.text_field :surname, placeholder: "Nazwisko" %></p>
+            
+            <p style="margin-bottom:0"><em>(licznik z wartości udziału oznaczający powierzchnię lokalu*100 -> liczba całkowita)</em></p>
+            <p style="margin-top:0"><span class="ikona"><i class="fas fa-handshake"></i></span><%= f.number_field :part, placeholder: "Udział w nieruchomości" %></p>
+            
+            <span style="margin-bottom:1.5em"><%= f.submit "Zaktualizuj" %></span>
+          
+          </fieldset>
+          <div class="clearfix"></div>
+        <% end %>
+
+        <div>
+            <span style="display:block; margin: 1em 0; color: black; font-weight: bold; font-size: 1.2em">Niezadowolony?</span>
+            <span style="display:block; margin-bottom:1em"><%= button_to "Zlikwiduj konto", registration_path(resource_name), data: { confirm: "Jesteś pewny?" }, method: :delete, class:'btn' %></span>           
+        </div>
+          <span style="margin-right:0.5em"><%= link_to "Powrót", :back %></span>
+          <span style="margin-left:0.5em"><%= link_to "Strona głowna", home_index_path %></span>
+        <div class="clearfix"></div>
+
+      </div> <!-- end login -->
+
+      <div class="logo">EDYCJA PROFILU
+              
+        <div class="clearfix"></div>
+      </div>
+          
+    </div>
+    </center>
+  </div>
+</div>
+
+

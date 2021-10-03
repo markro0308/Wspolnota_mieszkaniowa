@@ -1,0 +1,34 @@
+<div class="main">
+  <div class="container-logo">
+    <center>
+    <div id="session" class="middle">
+      <div id="login">
+
+        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <fieldset class="clearfix">
+
+            <p ><span class="ikona"><i class="fas fa-envelope"></i></span><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %></p>
+            <div>
+              <span style="display:block; margin-bottom:1em"><%= f.submit "Wyślij instrukcje potwierdzające" %></span>
+              <span><%= render "devise/shared/links" %></span>
+              <span><%= link_to "Strona głowna", home_index_path %></span>
+            </div>
+          </fieldset>
+          <div class="clearfix"></div>
+        <% end %>
+
+        <div class="clearfix"></div>
+
+      </div> <!-- end login -->
+      <div class="logo">WYŚLIJ INSTRUKCJE POTWIERDZAJĄCE
+            
+        <div class="clearfix"></div>
+      </div>
+        
+    </div>
+    </center>
+  </div>
+</div>
+
+

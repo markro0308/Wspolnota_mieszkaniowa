@@ -1,0 +1,54 @@
+<header>
+    <section id="top" class="jumbotron2 jumbotron-fluid w-100">    
+    </section>
+</header>
+
+<div class="container">
+	<section id="section-body">
+		<h1 class="text-center display-4 mb-3">
+			<%= @post.title %>
+		</h1>
+
+		<p>
+			<%= @post.content %>
+		</p>
+
+		
+		<p class="text-end mb-1">
+			Data utworzenia: <%= @post.created_at.to_date %>
+	  	</p>
+  
+		<% if @post.updated_at? %>
+			<p class="text-end">
+				Data ostatniej aktualizacji: <%= @post.updated_at.to_date %>
+			</p>
+		<% end %>
+
+	</section>
+	<section id="section-comments">
+		<h2 class=" mb-3">Komentarze</h2>
+		<% @post.comments.each do |c| %>
+			<div class="card shadow-sm mb-2 flex-row">
+				<span class="ikona"><i class="fas fa-user fa-2x align-middle"></i></span>
+				<div class="card-body ps-0">
+					
+					<h5 class="card-title">
+						<span><%=h c.commenter %></span> &nbsp <span class="fw-normal" style="font-size:11px"><%=h c.created_at.to_date %></span>
+					</h5>
+
+					<p class="card-text">
+						<%=h c.body %>
+					</p>
+
+				</div>
+			</div>
+		<% end %>
+
+		<% if (user_signed_in?) && (current_user.email == "admin@ruby.pl") %>
+			<button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Edytuj post', edit_post_path(@post), :class => 'text-decoration-none text-reset' %></button>
+		<% end %>
+		<button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Cofnij do postów', posts_path, :class => 'text-decoration-none text-reset' %></button>
+		<button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Sekcja komentarzy', post_comments_path(@post), :class => 'text-decoration-none text-reset' %></button>
+		<button type="button" class="btn color-theme m-2 ms-0 mt-0 d-flex"><%= link_to "Strona głowna", home_index_path, :class => 'text-decoration-none text-reset' %></button>
+	</section>
+</div>

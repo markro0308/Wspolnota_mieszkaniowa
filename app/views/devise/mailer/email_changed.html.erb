@@ -1,0 +1,19 @@
+<div class="main">
+  <div class="container-logo">
+    <center>
+    <div id="session" class="middle">     
+        <p>Witaj <%= @email %>!</p><br/>
+        <% if @resource.try(:unconfirmed_email?) %>
+          <p>Kontaktujemy się z Tobą, aby powiadomić Cię, że Twój adres e-mail jest zmieniany na <%= @resource.unconfirmed_email %>.</p>
+        <% else %>
+          <p>Kontaktujemy się z Tobą, aby powiadomić Cię, że Twój adres e-mail jest zmieniany na <%= @resource.email %>.</p>
+        <% end %>
+
+        <div class="clearfix"></div>      
+    </div>
+    </center>
+  </div>
+</div>
+
+
+

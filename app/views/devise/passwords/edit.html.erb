@@ -1,0 +1,46 @@
+<style type="text/css">
+    body {
+      background: rgb(64,128,191);
+      background: -moz-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4080bf",endColorstr="#0070ff",GradientType=1);
+    }
+</style>
+
+<div class="main">
+  <div class="container-logo">
+    <center>
+    <div id="session" class="middle">
+      <div id="login">
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+          <fieldset class="clearfix">
+            <% if @minimum_password_length %>
+              <em>(minimum <%= @minimum_password_length %> znaków)</em>
+            <% end %><br />
+            <p><span class="ikona"><i class="fa fa-lock"></i></span><%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "Nowe hasło" %></p>
+            <p><span class="ikona"><i class="fa fa-lock"></i></span><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Powtórz nowe hasło" %></p>
+            <div>
+              <span style="display:block; margin-bottom:1em"><%= f.submit "Zmień hasło" %></span>
+              <span><%= render "devise/shared/links" %></span>
+              <span><%= link_to "Strona głowna", home_index_path %></span>
+            </div>
+          </fieldset>
+          <div class="clearfix"></div>
+        <% end %>
+
+        <div class="clearfix"></div>
+
+      </div> <!-- end login -->
+      <div class="logo">ZMIANA HASŁA
+            
+        <div class="clearfix"></div>
+      </div>
+        
+    </div>
+    </center>
+  </div>
+</div>

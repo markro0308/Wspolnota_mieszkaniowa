@@ -1,0 +1,46 @@
+<style type="text/css">
+    body {
+      background: rgb(64,128,191);
+      background: -moz-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: -webkit-radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      background: radial-gradient(circle, rgba(64,128,191,1) 14%, rgba(58,81,125,1) 85%, rgba(42,89,160,1) 100%, rgba(0,112,255,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4080bf",endColorstr="#0070ff",GradientType=1);
+    }
+</style>
+
+<div class="main">
+  <div class="container-logo">
+    <center>
+    <div id="session" class="middle">
+      <div id="login">
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <fieldset class="clearfix">
+
+            <p ><span class="ikona"><i class="fas fa-envelope"></i></span><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %></p>
+            <p><span class="ikona"><i class="fa fa-lock"></i></span><%= f.password_field :password, autocomplete: "current-password", placeholder: "Hasło" %></p> 
+            <% if devise_mapping.rememberable? %>
+              <p> <%= f.check_box :remember_me %> <%= f.label :remember_me, "Zapamiętaj mnie" %> </p>
+            <% end %>
+            <div>
+              <span style="width:48%; text-align:left;  display: inline-block;"><%= render "devise/shared/links" %></span>
+              <span style="width:48%; text-align:right;  display: inline-block; margin-bottom:1em"><%= f.submit "Zaloguj się" %></span>
+              <span><%= link_to "Strona głowna", home_index_path %></span>
+            </div>
+          </fieldset>
+          <div class="clearfix"></div>
+        <% end %>
+
+        <div class="clearfix"></div>
+
+      </div> <!-- end login -->
+      <div class="logo">LOGOWANIE
+            
+        <div class="clearfix"></div>
+      </div>
+        
+    </div>
+    </center>
+  </div>
+</div>

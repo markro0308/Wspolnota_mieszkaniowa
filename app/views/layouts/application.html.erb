@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WspolnotaMieszkaniowa</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.2/datatables.min.css"/>   
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.2/datatables.min.js"></script>
+   
+  </head>
+
+  <body class="bg-light">
+
+    <div class="d-flex flex-column">
+      <nav class="nav justify-content-end fixed-top shadow-sm bg-light tresc">
+        
+        <% if user_signed_in? %>
+          <span class="m-2 align-self-center">Zalogowano jako <strong><%= current_user.email %></strong>.</span>
+          <button type="button" class="btn nav-item color-theme m-2"><%= link_to 'Edytuj profil', edit_user_registration_path, :class => 'navbar-link text-decoration-none text-reset' %></button>
+          <button type="button" class="btn nav-item color-theme m-2 ms-0"><%= link_to "Wyloguj się", destroy_user_session_path, method: :delete, :class => 'navbar-link text-decoration-none text-reset' %></button>
+        <% else %>
+          <button type="button" class="btn nav-item color-theme m-2"><%= link_to "Zarejestruj się", new_user_registration_path, :class => 'navbar-link text-decoration-none text-reset' %></button>
+          <button type="button" class="btn nav-item color-theme m-2 ms-0"><%= link_to "Zaloguj się", new_user_session_path, :class => 'navbar-link text-decoration-none text-reset' %></button>
+        <% end %>
+      </nav>
+
+      <% if notice %>
+        <p class="my-alert"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="my-alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+
+      <% if (controller_name == "resolutions") || (controller_name == "posts") || (controller_name == "comments") %>
+
+        <footer class="text-center text-lg-start text-muted mt-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          <section>
+            <div class="container text-center text-md-start mt-4">
+              <div class="row mt-3">   
+
+                <div class="col-md-2 mx-auto mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    Na skróty
+                  </h6>
+                  <p>
+                    <%= link_to "Strona głowna", home_index_path, :class =>'text-reset' %>
+                  </p>
+                  <p>
+                    <%= link_to "Posty", posts_path, :class =>'text-reset' %>
+                  </p>
+                  <p>
+                    <%= link_to "Uchwały", resolutions_path, :class =>'text-reset' %>
+                  </p>
+                </div>
+
+                <div class="col-md-4 mx-auto mb-md-0 mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    Kontakt
+                  </h6>
+                  <p><i class="fas fa-home me-3"></i> Osiedle Nowa Osada, ul. Spacerowa 12/1, Wrocław</p>
+                  <p>
+                    <i class="fas fa-envelope me-3"></i>
+                    admin@ruby.pl
+                  </p>
+                  <p><i class="fas fa-phone me-3"></i> +48 767 555 469</p>
+                </div>
+
+              </div>
+            </div>
+          </section>
+         
+          <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright: MK. Wszystkie prawa zastrzerzone.
+          </div>
+          
+        </footer>
+        
+      <% end %>
+ 
+    </div>
+
+  </body>
+
+</html>

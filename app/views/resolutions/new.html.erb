@@ -1,0 +1,14 @@
+<header>
+    <section id="top" class="jumbotron3 jumbotron-fluid w-100">   
+    </section>
+</header>
+
+<div class="container">
+    <section id="section-body">
+        <h1 class="text-center display-4">Nowa uchwała</h1>
+
+        <%= render 'form', resolution: @resolution %>
+
+        <button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Cofnij', resolutions_path, :class => 'text-decoration-none text-reset' %></button>
+    </section>
+</div>

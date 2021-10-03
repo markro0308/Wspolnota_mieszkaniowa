@@ -1,0 +1,26 @@
+<header>
+    <section id="top" class="jumbotron4 jumbotron-fluid w-100">    
+    </section>
+</header>
+
+<div id="title" class="text-center">Komentarz</div>
+
+<div class="container">
+  <section id="section-body">
+    <div class="field">
+      <h4 class="fw-normal">Autor:</h4>
+      <p class="shadow-sm fs-3 text-center bg-white"><%=h @comment.commenter %></p>
+    </div>
+
+    <div class="field">
+      <h4 class="fw-normal">Komentarz:</h4>
+      <p class="shadow-sm bg-white p-2"><%=h @comment.body %></p>
+    </div>
+
+    <% if (user_signed_in?) && (@comment.commenter == "#{current_user.name} #{current_user.surname}") %>
+      <button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Edytuj', [:edit, @commentable, :comment], :class => 'text-decoration-none text-reset' %></button>
+    <% end %>
+    <button type="button" class="btn color-theme m-2 ms-0"><%= link_to 'Cofnij', [@commentable, :comments], :class => 'text-decoration-none text-reset' %></button>
+
+  </section>
+</div>
