@@ -43,6 +43,14 @@ Opis konfiguracji środowiska i uruchomienia projektu:
     -> http://localhost:3000
    
 8. Logowanie:
+
+	Aby mieć dostęp do wszystkich funkcji nleży utworzyć konto dla administratora pod adresem meilowym: admin@ruby.pl
+
+	Można wypróbować aplikację pod adresem:
+	https://peaceful-brook-18924.herokuapp.com/
+
+	Są tam utworzone następujące konta:
+
     Dane logowania dla administratora:
 	email: admin@ruby.pl
 	hasło: 000000
