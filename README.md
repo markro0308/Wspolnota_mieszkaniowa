@@ -13,7 +13,7 @@ Wykorzystane techonologie:
 	JavaScript  
 
 	Baza danych: 
-	SQLite
+	PostgreSQL
 
 Opis konfiguracji środowiska i uruchomienia projektu:
 
